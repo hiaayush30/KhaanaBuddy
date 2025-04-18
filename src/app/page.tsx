@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Flame, Utensils, CalendarDays, ChevronsDown, CopyrightIcon, LucideCopyright, Copyright } from "lucide-react";
+import { Flame, Utensils, CalendarDays, ChevronsDown, Copyright } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,11 +29,11 @@ export default function Home() {
             Your personal AI meal planner for delicious weekly meal suggestions.
           </p>
           <Link href={"/meal-plan"}>
-            <Button className="mx-5 my-2 bg-[#ff4d4d] hover:bg-[#e64545] text-white px-6 py-3 rounded-2xl shadow-md">
+            <Button className="mx-5 my-2 bg-[#e64a19] hover:bg-[#ff6130] text-white px-6 py-3 rounded-2xl shadow-md">
               Get Started
             </Button>
           </Link>
-          <Button className="bg-[#ff4d4d] hover:bg-[#e64545] text-white px-6 py-3 rounded-2xl shadow-md">
+          <Button className="bg-[#e64a19] hover:bg-[#ff6130] text-white px-6 py-3 rounded-2xl shadow-md">
             Explore
             <ChevronsDown />
           </Button>
@@ -44,7 +44,7 @@ export default function Home() {
       <section className="py-16 px-6 grid gap-10 max-w-6xl mx-auto md:grid-cols-3">
         <Card className="bg-[#262626] text-white rounded-2xl shadow-md">
           <CardContent className="p-6 flex flex-col items-center text-center">
-            <Flame className="w-10 h-10 text-[#ffc107] mb-4" />
+            <Flame className="w-10 h-10 text-[#ff5722] mb-4" />
             <h3 className="font-semibold text-xl mb-2">Smart Suggestions</h3>
             <p>Get AI-powered weekly meal ideas tailored to your taste and diet.</p>
           </CardContent>
@@ -52,7 +52,7 @@ export default function Home() {
 
         <Card className="bg-[#262626] text-white rounded-2xl shadow-md">
           <CardContent className="p-6 flex flex-col items-center text-center">
-            <CalendarDays className="w-10 h-10 text-[#ffc107] mb-4" />
+            <CalendarDays className="w-10 h-10 text-[#ff5722] mb-4" />
             <h3 className="font-semibold text-xl mb-2">Weekly Planning</h3>
             <p>Stay ahead with an organized plan for every day of the week.</p>
           </CardContent>
@@ -60,7 +60,7 @@ export default function Home() {
 
         <Card className="bg-[#262626] text-white rounded-2xl shadow-md">
           <CardContent className="p-6 flex flex-col items-center text-center">
-            <Utensils className="w-10 h-10 text-[#ffc107] mb-4" />
+            <Utensils className="w-10 h-10 text-[#ff5722] mb-4" />
             <h3 className="font-semibold text-xl mb-2">Tasty & Healthy</h3>
             <p>Balanced meals that are both delicious and nutritious.</p>
           </CardContent>
@@ -73,7 +73,7 @@ export default function Home() {
           We make meal planning fun and easy with the help of AI. No more stress over &quot;What&apos;s for dinner?&quot;
         </p>
         <Link href="/meal-plan">
-          <Button className="bg-[#ff4d4d] hover:bg-[#e64545] text-white px-6 py-3 rounded-2xl shadow-md">
+          <Button className="bg-[#e64a19] hover:bg-[#ff6130] text-white px-6 py-3 rounded-2xl shadow-md">
             Try It Now
           </Button>
         </Link>

@@ -2,14 +2,14 @@
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
-import { SignedIn, SignedOut, SignInButton, SignOutButton, SignUpButton, useUser } from '@clerk/nextjs'
+import { SignedIn, SignedOut, SignOutButton, useUser } from '@clerk/nextjs'
 import { Button } from './ui/button'
 
 
 function Navbar() {
   const { isLoaded, isSignedIn, user } = useUser();
   return (
-    <nav className='py-3 bg-linear-to-b  bg-red-500 via-red-red-600 to-red-800 text-[#fefefe] px-2 border-b-4 border-white flex justify-between'>
+    <nav className="mx-18 mt-4 rounded-3xl py-3 px-2 flex justify-between text-white bg-gradient-to-r from-[#ff7043]/95 via-[#ff5722]/90 to-[#e64a19] shadow-md">
       <div className='py-1'>
         <Link href={"/"}>
           <Image
@@ -23,18 +23,18 @@ function Navbar() {
       <div className='flex gap-3 items-center'>
         <SignedOut>
           <Link href={"/"}>
-            <Button>Home</Button>
+            <Button className='rounded-2xl border-2 border-white bg-orange-600 hover:bg-orange-500'>Home</Button>
           </Link>
-          <Link href={isSignedIn ? "/subscribe":"/sign-up"}>
-            <Button>Subscribe</Button>
+          <Link href={isSignedIn ? "/subscribe" : "/sign-up"}>
+            <Button className='rounded-2xl border-2 border-white bg-orange-600 hover:bg-orange-500'>Subscribe</Button>
           </Link>
           <Link href={"/sign-up"}>
-            <Button className='bg-green-600 hover:bg-green-500'>Signup</Button>
+            <Button className='rounded-2xl border-2 border-white bg-green-600 hover:bg-green-500'>Signup</Button>
           </Link>
         </SignedOut>
         <SignedIn>
           <Link href={"/meal-plan"}>
-            <Button className='bg-orange-400 hover:bg-orange-200 hover:text-stone-700 cursor-pointer text-white'>Meal Plan</Button>
+            <Button className='rounded-2xl border-2 border-white bg-orange-500 hover:bg-orange-400 hover:shadow-sm text-white cursor-pointer'>Meal Plan</Button>
           </Link>
           {isLoaded && user?.imageUrl ? (
             <Link href={"/profile"}>
@@ -50,7 +50,7 @@ function Navbar() {
             <div></div>
           )}
           <SignOutButton>
-            <Button variant={"destructive"}>Logout</Button>
+            <Button className='rounded-2xl border-2 border-white' variant={"destructive"}>Logout</Button>
           </SignOutButton>
         </SignedIn>
       </div>
