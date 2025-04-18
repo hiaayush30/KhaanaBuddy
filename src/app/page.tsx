@@ -11,7 +11,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#1a1a1a] text-[#fefefe]">
       <section className="relative overflow-hidden text-center py-20 px-6 bg-gradient-to-b from-[#292524] to-[#1a1a1a]">
         <video
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] object-cover z-0 opacity-40 rounded-lg"
+          className="mask-fade-bottom absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] object-cover z-0 opacity-40 rounded-lg"
           src={"https://res.cloudinary.com/dinsdxr0g/video/upload/v1744915486/video_t8wzvf.mp4"}
           controls={false}
           loop
