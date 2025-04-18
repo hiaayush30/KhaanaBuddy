@@ -9,7 +9,7 @@ import { Button } from './ui/button'
 function Navbar() {
   const { isLoaded, isSignedIn, user } = useUser();
   return (
-    <nav className='py-3 bg-linear-to-b bg-[#ffc107] to-[#856502] text-[#fefefe] px-2 border-b-4 border-white flex justify-between'>
+    <nav className='py-3 bg-linear-to-b  bg-red-500 via-red-red-600 to-red-800 text-[#fefefe] px-2 border-b-4 border-white flex justify-between'>
       <div className='py-1'>
         <Link href={"/"}>
           <Image
