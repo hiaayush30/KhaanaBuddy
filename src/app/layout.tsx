@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-stone-800 text-white`}>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#292524] text-white`}>
           <ReactQueryClientProvider>
             <Navbar />
             {children}

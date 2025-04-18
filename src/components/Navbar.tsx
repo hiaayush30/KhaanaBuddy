@@ -9,7 +9,7 @@ import { Button } from './ui/button'
 function Navbar() {
   const { isLoaded, isSignedIn, user } = useUser();
   return (
-    <nav className="mx-18 mt-4 rounded-3xl py-3 px-2 flex justify-between text-white bg-gradient-to-r from-[#ff7043]/95 via-[#ff5722]/90 to-[#e64a19] shadow-md">
+    <nav className="mx-18 mt-4 rounded-3xl py-3 px-2 flex justify-between text-white bg-[#ff7043] shadow-md">
       <div className='py-1'>
         <Link href={"/"}>
           <Image
@@ -34,7 +34,7 @@ function Navbar() {
         </SignedOut>
         <SignedIn>
           <Link href={"/meal-plan"}>
-            <Button className='rounded-2xl border-2 border-white bg-orange-500 hover:bg-orange-400 hover:shadow-sm text-white cursor-pointer'>Meal Plan</Button>
+            <Button className='rounded-2xl border-2 border-white bg-orange-600 hover:bg-orange-500 hover:shadow-sm text-white cursor-pointer'>Meal Plan</Button>
           </Link>
           {isLoaded && user?.imageUrl ? (
             <Link href={"/profile"}>
@@ -50,7 +50,7 @@ function Navbar() {
             <div></div>
           )}
           <SignOutButton>
-            <Button className='rounded-2xl border-2 border-white' variant={"destructive"}>Logout</Button>
+            <Button className='rounded-2xl border-2 border-white hover:bg-red-500 cursor-pointer' variant={"destructive"}>Logout</Button>
           </SignOutButton>
         </SignedIn>
       </div>
