@@ -15,7 +15,7 @@ import { Menu } from "lucide-react"
 function Navbar() {
   const { isLoaded, isSignedIn, user } = useUser();
   return (
-    <nav className="mx-4 mt-4 border-4 border-orange-600 rounded-3xl py-3 px-4 flex justify-between items-center text-white bg-[#ff7043] shadow-md">
+    <nav className="mx-8 md:mx-24 lg:mx-32 mt-4 border-4 border-orange-600 rounded-3xl py-3 px-4 flex justify-between items-center text-white bg-[#ff7043] shadow-md">
       <div className='py-1'>
         <Link href="/">
           <Image

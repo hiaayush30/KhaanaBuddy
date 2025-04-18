@@ -68,7 +68,7 @@ export default function Home() {
           </CardContent>
         </Card>
       </section>
-      <section className="py-10">
+      <section className="py-10 px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Pricing</h2>
           <p className="text-[#dcdcdc] max-w-xl mx-auto">
@@ -112,7 +112,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="text-center py-16 bg-[#292524]">
+      <section className="text-center py-16 bg-gradient-to-b from-[#1a1a1a] to-[#292524]">
         <h2 className="text-3xl font-bold mb-4">Let Khaana Buddy cook up ideas for you!</h2>
         <p className="max-w-xl mx-auto mb-6 text-[#dcdcdc]">
           We make meal planning fun and easy with the help of AI. No more stress over &quot;What&apos;s for dinner?&quot;

@@ -18,14 +18,13 @@ export async function POST() {
             }
         })
         if (existingUser) {
+            console.log("user already exists:",existingUser)
             return NextResponse.json({ message: "profile already exists" })
         }
         await prisma.user.create({
             data: {
                 email,
                 userId: clerkUser.id,
-                subscriptionTier: null,
-                subscriptionId: null
             }
         });
         return NextResponse.json({

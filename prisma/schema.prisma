@@ -15,14 +15,28 @@ datasource db {
 }
 
 model User {
-  id               String   @id @default(cuid())
-  userId           String   @unique
-  email            String
-  subscribed       Boolean  @default(false)
-  subscriptionTier Tier?
-  subscriptionId   String?  @unique
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  id                     String    @id @default(cuid())
+  userId                 String    @unique
+  email                  String
+  subscribed             Boolean   @default(false)
+  subscriptionTier       Tier?
+  orderId                String?   @unique
+  subscriptionExpiryDate DateTime?
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  payments               Payment[]
+}
+
+model Payment {
+  id                  String  @id @default(cuid())
+  amount              Int
+  orderId             String
+  razorpay_payment_id String?
+  razorpay_signature  String?
+  paymentSuccessfull  Boolean @default(false)
+  userId              String
+  user                User    @relation(fields: [userId], references: [userId])
+  subscriptionTier    Tier?
 }
 
 enum Tier {

@@ -3,9 +3,9 @@
 import React from "react";
 import { availablePlans } from "@/lib/plans";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 import classNames from "classnames";
+import PaymentsPage from "@/components/PaymentsPage"
 
 function Subscribe() {
   return (
@@ -47,9 +47,7 @@ function Subscribe() {
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-[#e64a19] hover:bg-[#ff6130] text-white py-2 rounded-xl">
-                Choose Plan
-              </Button>
+              <PaymentsPage amount={plan.amount} tier={plan.interval} />
             </CardContent>
           </Card>
         ))}

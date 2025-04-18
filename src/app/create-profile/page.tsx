@@ -2,6 +2,7 @@
 import { ApiResponse } from "@/types/ApiResponse"
 import { useUser } from "@clerk/nextjs";
 import { useMutation } from "@tanstack/react-query"
+import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -34,5 +35,8 @@ export default function CreateProfile() {
             mutate()
         }
     }, [isLoaded, isSignedIn])
-    return <div className="py-10 text-center w-full">Processing sign in...</div>
+    return <div className="py-10 text-center flex flex-col items-center justify-center gap-2">
+        <Loader2 className="text-2xl animate-spin"/>
+        <div>Processing sign in...</div>
+    </div>
 }
