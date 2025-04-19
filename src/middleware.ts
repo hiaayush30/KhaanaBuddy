@@ -4,7 +4,9 @@ import { NextResponse } from "next/server";
 const isPublicRoute = createRouteMatcher([
     "/",
     "/sign-up(.*)",
-    "./subscribe(.*)"
+    "/subscribe(.*)",
+    "/api/checkSubscription(.*)",
+    "/api/razorpay(.*)"
 ])
 
 const isSignupRoute = createRouteMatcher([

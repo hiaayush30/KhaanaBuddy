@@ -13,7 +13,7 @@ export type PlanInterval = "weekly"|"yearly"|"monthly"
 export const availablePlans : Plan[] = [
     {
         name:"Weekly Plan",
-        amount:49,
+        amount:1,
         currency:"INR",
         interval:"weekly",
         description:"Great if yout want to try out the service first",
@@ -24,7 +24,7 @@ export const availablePlans : Plan[] = [
     },
     {
         name:"Monthly Plan",
-        amount:149,
+        amount:2,
         currency:"INR",
         isPopular:true,
         interval:"monthly",
@@ -36,7 +36,7 @@ export const availablePlans : Plan[] = [
     },
     {
         name:"Yearly Plan",
-        amount:499,
+        amount:3,
         currency:"INR",
         interval:"yearly",
         description:"Best value for those commited to improving their diet long-term",
