@@ -23,6 +23,7 @@ export default clerkMiddleware(async (auth, req) => {
     if (isSignupRoute(req) && userId) {
         return NextResponse.redirect(new URL("/meal-plan", origin));
     }
+
     return NextResponse.next();
 });
 

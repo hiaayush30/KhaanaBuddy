@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { PlanInterval } from "@/lib/plans";
 
 
-export const initiate = async (amount: number, tier:PlanInterval) => {
+export const initiate = async (amount: number, tier: PlanInterval) => {
     const user = await currentUser();
     if (!user) {
         return redirect(`${process.env.NEXT_PUBLIC_URL}/sign-up`)
@@ -29,7 +29,7 @@ export const initiate = async (amount: number, tier:PlanInterval) => {
                 amount,
                 userId: user.id,
                 orderId: x.id,
-                subscriptionTier:tier
+                subscriptionTier: tier
             }
         })
     } catch (error) {
@@ -38,4 +38,26 @@ export const initiate = async (amount: number, tier:PlanInterval) => {
     }
 
     return x;
+}
+
+export const checkUserSubscription = async (userId: string) => {
+    try {
+        const user = await prisma.user.findFirst({
+            where: {
+                userId
+            }
+        })
+        if (!user || !user.subscribed) {
+            return null;
+        } else {
+            return ({
+                subscribed: user.subscribed,
+                subscriptionExpiryDate: user.subscriptionExpiryDate,
+                subscriptionTier: user.subscriptionTier
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }
