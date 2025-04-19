@@ -39,25 +39,3 @@ export const initiate = async (amount: number, tier: PlanInterval) => {
 
     return x;
 }
-
-export const checkUserSubscription = async (userId: string) => {
-    try {
-        const user = await prisma.user.findFirst({
-            where: {
-                userId
-            }
-        })
-        if (!user || !user.subscribed) {
-            return null;
-        } else {
-            return ({
-                subscribed: user.subscribed,
-                subscriptionExpiryDate: user.subscriptionExpiryDate,
-                subscriptionTier: user.subscriptionTier
-            })
-        }
-    } catch (error) {
-        console.log(error);
-        return null;
-    }
-}

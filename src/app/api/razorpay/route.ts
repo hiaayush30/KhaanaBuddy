@@ -68,7 +68,7 @@ export const POST = async (req: NextRequest) => {
                             subscriptionExpiryDate: expiryDate,
                         },
                     });
-                    return NextResponse.json({ success: true, message: "Payment successful!" });
+                    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_URL}/meal-plan?message=payment+successfull!`)
                 }
 
             } else {
