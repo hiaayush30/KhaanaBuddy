@@ -3,14 +3,10 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Check } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useSearchParams } from 'next/navigation';
-
-
-const dietTypes = ['vegan', 'keto', 'veg', 'any']
 
 function MealPlan() {
   const searchParams = useSearchParams();
@@ -28,14 +24,38 @@ function MealPlan() {
   const days = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
   const [currentDay, setCurrentDay] = useState(0);
 
+  interface MealPlanInput {
+    snacks: boolean;
+    calories: number;
+    diet: null | string;
+    allergies: null | string;
+    cuisine: string | null;
+  }
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const payload: MealPlanInput = {
+      calories: Number(formData.get("calories")),
+      snacks: formData.get("snacks")?.toString() ? true : false,
+      diet: formData.get("diet")?.toString() || null,
+      allergies: formData.get("allergies")?.toString() || null,
+      cuisine: formData.get("cuisine")?.toString() || null
+    }
+
+    // You can add a POST request here
+  }
 
   return (
     <div className='py-5 px-5'>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5">
+      <div className="flex flex-col md:flex-row md:justify-center md:items-stretch md:gap-0 gap-5">
         {/* Plan for the Week */}
-        <div className="mx-auto min-w-[70%] bg-gradient-to-b from-[#ff7043] to-[#e64a19] p-6 rounded-2xl shadow-md flex flex-col items-center justify-start space-y-4 text-black">
+        <div className="md:w-1/2 bg-gradient-to-b from-[#ff7043] to-[#e64a19] md:border-r-4 border-stone-800 p-6 sm:rounded-2xl md:rounded-none md:rounded-l-2xl shadow-md flex flex-col items-center justify-start space-y-4 text-black">
           <h2 className="text-xl lg:text-3xl font-bold text-black text-center">AI Meal Plan Generator</h2>
-          <form className='flex flex-col items-center gap-3'>
+          <form
+            onSubmit={handleSubmit}
+            className='flex flex-col items-center gap-3'>
             <div className="space-y-2 w-full max-w-md">
               <Label htmlFor="calories" className="text-black">Target Calories<span className='text-slate-600'>/day*</span></Label>
               <Input name='calories' id="calories" type='number' required min={500} max={100000} placeholder="e.g. 2000" className="bg-white" />
@@ -43,29 +63,30 @@ function MealPlan() {
 
             <div className="px-0 flex items-center self-start">
               <Input name='snacks' id="snacks" type='checkbox' className="bg-white" />
-              <Label htmlFor="snacks" className="text-black">Include snacks</Label>
+              <Label htmlFor="snacks" className="text-black ml-2">Include snacks</Label>
             </div>
 
             <div className="space-y-2 w-full max-w-md">
-              <Label htmlFor="weight" className="text-black">Diet type</Label>
+              <Label htmlFor="dietType" className="text-black">Diet type</Label>
               <Input name='diet' id="dietType" placeholder="e.g. keto,veg,any" className="bg-white" />
             </div>
 
             <div className="space-y-2 w-full max-w-md">
-              <Label htmlFor="weight" className="text-black">Allergies</Label>
+              <Label htmlFor="allergies" className="text-black">Allergies</Label>
               <Input name='allergies' id="allergies" placeholder="e.g. peanuts" className="bg-white" />
             </div>
 
             <div className="space-y-2 w-full max-w-md">
-              <Label htmlFor="weight" className="text-black">Preferred cuisine*</Label>
-              <Input name='cuisine' id="cuisines" placeholder="e.g. Indian,Chinese" className="bg-white" />
+              <Label htmlFor="cuisines" className="text-black">Preferred cuisine*</Label>
+              <Input required name='cuisine' id="cuisines" placeholder="e.g. Indian,Chinese" className="bg-white" />
             </div>
 
             <Button type='submit' className="w-full max-w-md">Generate Meal Plan</Button>
           </form>
         </div>
+
         {/* Weekly Plan Preview */}
-        <div className="min-w-[70%] mx-auto bg-gradient-to-b from-[#ff7043] to-[#e64a19] text-black p-6 rounded-2xl shadow-md flex flex-col items-center justify-start">
+        <div className="md:w-2/3 bg-gradient-to-b from-[#ff7043] to-[#e64a19] text-black p-6 sm:rounded-2xl md:rounded-none md:rounded-r-2xl shadow-md flex flex-col items-center justify-start">
           <h2 className="text-xl lg:text-3xl text-center font-bold mb-4 text-black">Your Weekly Plan</h2>
 
           <div className="flex items-center justify-between w-full max-w-md mb-4">
@@ -105,9 +126,8 @@ function MealPlan() {
             </div>
           </div>
         </div>
-
-      </div >
-    </div >
+      </div>
+    </div>
   );
 }
 
