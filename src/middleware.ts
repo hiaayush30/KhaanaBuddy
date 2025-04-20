@@ -6,7 +6,8 @@ const isPublicRoute = createRouteMatcher([
     "/sign-up(.*)",
     "/subscribe(.*)",
     "/api/checkSubscription(.*)",
-    "/api/razorpay(.*)"
+    "/api/razorpay(.*)",
+    "/api/gemini(.*)"
 ])
 
 const isSignupRoute = createRouteMatcher([
@@ -30,7 +31,6 @@ export default clerkMiddleware(async (auth, req) => {
         return NextResponse.redirect(new URL("/meal-plan", origin));
     }
     if (isMealPlanRoute(req)) {
-
         const res = await fetch(process.env.NEXT_PUBLIC_URL + "/api/checkSubscription?userId=" + userId);
         if (!res.ok) {
             return NextResponse.redirect(new URL("/subscribe", origin));
